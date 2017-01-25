@@ -119,7 +119,7 @@ public class SokobanModel extends Observable implements iModel{
 			in = new FileInputStream(new File(path));
 		} catch (FileNotFoundException e) {
 			this.setChanged();
-			this.notifyObservers("DisplayMassege The file not found");
+			this.notifyObservers("displayMassegeCli The file not found");
 			System.out.println("1");
 			return;
 		}
@@ -141,7 +141,7 @@ public class SokobanModel extends Observable implements iModel{
 			in = new FileInputStream(new File(path));
 		} catch (FileNotFoundException e) {
 			this.setChanged();
-			this.notifyObservers("DisplayMassege The file not found");
+			this.notifyObservers("displayMassegeCli The file not found");
 			return;
 		}
 		MyObjectLevelLoader objL=new MyObjectLevelLoader();
@@ -163,7 +163,7 @@ public class SokobanModel extends Observable implements iModel{
 			in = new FileInputStream(new File(path));
 		} catch (FileNotFoundException e) {
 			this.setChanged();
-			this.notifyObservers("DisplayMassege The file not found");
+			this.notifyObservers("displayMassegeCli The file not found");
 			return;
 		}
 		MyXmlLevelLoader xmlL=new MyXmlLevelLoader();
@@ -194,7 +194,7 @@ public class SokobanModel extends Observable implements iModel{
 			out= new FileOutputStream(path);
 		} catch (FileNotFoundException e) {
 			this.setChanged();
-			this.notifyObservers("DisplayMassege Wrong file name");
+			this.notifyObservers("displayMassegeCli Wrong file name");
 			return;
 		}
 		MyTextLevelSaver txtS =new MyTextLevelSaver();
@@ -224,7 +224,7 @@ public class SokobanModel extends Observable implements iModel{
 			out= new FileOutputStream(path);
 		} catch (FileNotFoundException e) {
 			this.setChanged();
-			this.notifyObservers("DisplayMassege Wrong file name");
+			this.notifyObservers("displayMassegeCli Wrong file name");
 			return;
 		}
 		MyObjectLevelSaver objS =new MyObjectLevelSaver();
@@ -254,7 +254,7 @@ public class SokobanModel extends Observable implements iModel{
 			out= new FileOutputStream(path);
 		} catch (FileNotFoundException e) {
 			this.setChanged();
-			this.notifyObservers("DisplayMassege Wrong file name");
+			this.notifyObservers("displayMassegeCli Wrong file name");
 			return;
 		}
 		MyXmlLevelSaver xmlS =new MyXmlLevelSaver();
@@ -280,7 +280,7 @@ public class SokobanModel extends Observable implements iModel{
 	@Override
 	public void error() {
 		setChanged();
-		notifyObservers("DisplayMassege Wrong Input");
+		notifyObservers("displayMassegeCli Wrong Input");
 	}
 
 

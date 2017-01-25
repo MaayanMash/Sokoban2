@@ -20,7 +20,6 @@ public class CommandDisplayMassege extends CommandA {
 		view.displayMassege(params);
 		if (ch!=null){
 			ch.insertToQueue(params);
-			System.out.println("vv");
 		}
 			
 	}

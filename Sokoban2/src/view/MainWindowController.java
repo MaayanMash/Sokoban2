@@ -138,7 +138,14 @@ public class MainWindowController extends Observable implements Initializable, i
 					stopTimer();
 					Alert alert =new Alert(AlertType.INFORMATION);
 					alert.setHeaderText("The level solved!!");
-					alert.setContentText("Time: "+ countTime+"\nSteps: "+ theLevel.getCountSteps());
+					if (minCount<10 && secCount<10)
+						alert.setContentText("Time: 0"+minCount+":0"+secCount+"\nSteps: "+ theLevel.getCountSteps());
+					else if (minCount<10 && secCount>10)
+						alert.setContentText("Time: 0"+minCount+":"+secCount+"\nSteps: "+ theLevel.getCountSteps());
+					if (minCount>10 && secCount<10)
+						alert.setContentText("Time: "+minCount+":0"+secCount+"\nSteps: "+ theLevel.getCountSteps());
+					if (minCount>10 && secCount>10)
+						alert.setContentText("Time: "+minCount+":"+secCount+"\nSteps: "+ theLevel.getCountSteps());
 					alert.show();
 					stopTimer();
 				}
@@ -172,7 +179,7 @@ public class MainWindowController extends Observable implements Initializable, i
 		
 	}
 	public void stopTimer(){
-		if(this.timer!=null)
+		if (this.timer!=null)
 			this.timer.cancel();
 	}
 	public void continueTime(){
@@ -182,9 +189,21 @@ public class MainWindowController extends Observable implements Initializable, i
 			
 			@Override
 			public void run() {
-				CounterTime.set(" "+(++countTime));
+				secCount++;
+				if (secCount>59){
+					minCount++;
+					secCount=0;
+				}
+				if (minCount<10)
+					if(secCount<10)
+						CounterTime.set("0"+(minCount)+":0"+(secCount));
+					else
+						CounterTime.set("0"+(minCount)+":"+(secCount));
+				else
+				CounterTime.set(""+(minCount)+":"+(secCount));
+					
 			}
-		}, countTime, 1000);
+		}, 0, 1000);		
 	}
 
 	public void startStopMusic(){
@@ -201,7 +220,7 @@ public class MainWindowController extends Observable implements Initializable, i
 	}
 
 	public void openFile(){
-		this.fromCli=true;
+		this.fromCli=false;
 		FileChooser fc =new FileChooser();
 		fc.setTitle("open level");
 		fc.setInitialDirectory(new File("./resources/levels"));
@@ -230,7 +249,7 @@ public class MainWindowController extends Observable implements Initializable, i
 	}
 	@Override
 	public void displayLevel(Level2D theLevel) {
-		if (!fromCli){
+		if (fromCli){
 			startTimer();
 			//this.fromCli=true;
 		}
@@ -258,7 +277,6 @@ public class MainWindowController extends Observable implements Initializable, i
 		} else {
 			if (time)
 				continueTime();
-			this.startStopMusic();
 		    alert.close();
 		}
 	}

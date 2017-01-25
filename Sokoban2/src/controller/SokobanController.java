@@ -3,9 +3,6 @@ package controller;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.text.SimpleAttributeSet;
-
 import controller.generic.GenericController;
 import controller.generic.iCommand;
 import controller.server.MyServer;
@@ -71,9 +68,13 @@ public class SokobanController implements Observer {
 		CommandDisplayMassege cdm = new CommandDisplayMassege(theView, TheClientHendler);
 		this.hmCommands.put("DisplayMassege", cdm);
 		this.hmCommands.put("displayMassege", cdm);
-		CommandDisplayCli cmc= new CommandDisplayCli(theModel, TheClientHendler);
-		this.hmCommands.put("Display", cmc);
-		this.hmCommands.put("display", cmc);
+		CommandDisplayCli cdc= new CommandDisplayCli(theModel, TheClientHendler);
+		this.hmCommands.put("Display", cdc);
+		this.hmCommands.put("display", cdc);
+		CommandMassegeCli cmc= new CommandMassegeCli(theView, TheClientHendler);
+		this.hmCommands.put("displayMassegeCli", cmc);
+		this.hmCommands.put("DisplayMassegeCli", cmc);
+		
 	}
 	
 	@Override
@@ -86,7 +87,7 @@ public class SokobanController implements Observer {
 		iCommand cm = hmCommands.get(commandName);
 		if (cm==null)
 		{
-			cm=hmCommands.get("DisplayMassege");
+			cm=hmCommands.get("displayMassegeCli");
 			params="Wrong input";
 		}
 		cm.setParams(params);
