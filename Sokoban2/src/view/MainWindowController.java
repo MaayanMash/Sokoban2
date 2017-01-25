@@ -44,6 +44,8 @@ public class MainWindowController extends Observable implements Initializable, i
 	//timer
 	@FXML private Text SokobanTimer;
 	private int countTime;
+	private int minCount;
+	private int secCount;
 	private StringProperty CounterTime;
 	private Timer timer;
 	private boolean time;
@@ -152,9 +154,21 @@ public class MainWindowController extends Observable implements Initializable, i
 			
 			@Override
 			public void run() {
-				CounterTime.set(" "+(++countTime));
+				secCount++;
+				if (secCount>59){
+					minCount++;
+					secCount=0;
+				}
+				if (minCount<10)
+					if(secCount<10)
+						CounterTime.set("0"+(minCount)+":0"+(secCount));
+					else
+						CounterTime.set("0"+(minCount)+":"+(secCount));
+				else
+				CounterTime.set(""+(minCount)+":"+(secCount));
+					
 			}
-		}, 0, 1000);
+		}, 0, 1000);		
 		
 	}
 	public void stopTimer(){

@@ -24,16 +24,6 @@
                   <MenuItem mnemonicParsing="false" text="Save level" onAction="#saveFile" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
    </top>
@@ -53,7 +43,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold Italic" size="16.0" />
+                  <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
             <HBox prefHeight="27.0" prefWidth="128.0">
@@ -63,13 +53,16 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="System Italic" size="14.0" />
+                        <Font name="System Italic" size="16.0" />
                      </font>
                   </Label>
-                  <Text fx:id="SokobanTimer" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text fx:id="SokobanTimer" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
                   </Text>
                </children>
             </HBox>
@@ -80,7 +73,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="System Italic" size="14.0" />
+                        <Font name="System Italic" size="16.0" />
                      </font>
                   </Label>
                   <Text fx:id="SokobanSteps" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
