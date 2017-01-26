@@ -68,7 +68,7 @@ public class MainWindowController extends Observable implements Initializable, i
 		this.player=new MediaPlayer(new javafx.scene.media.Media(musicString));
 		this.music=false;
 		this.music=false;
-		this.fromCli=false;
+		this.fromCli=true;
 		this.myKey = initKeyEvent("./resources/Settings/Sokoban Key.xml");
 	}
 	@Override
@@ -90,6 +90,7 @@ public class MainWindowController extends Observable implements Initializable, i
 				else if(event.getCode()==myKey.getDown()){
 					command="move down";
 					SokobanDisplayer.setPlayerFileName("./resources/images/player1.jpg");
+					
 				}
 				else if(event.getCode()==myKey.getLeft()){
 					command="move left";
@@ -264,7 +265,7 @@ public class MainWindowController extends Observable implements Initializable, i
 	public void displayLevel(Level2D theLevel) {
 		if (fromCli){
 			startTimer();
-			//this.fromCli=true;
+			this.fromCli=false;
 		}
 			
 		this.SokobanDisplayer.setSokobanCol(theLevel.getSizeCol());
