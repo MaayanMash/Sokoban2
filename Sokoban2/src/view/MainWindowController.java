@@ -83,14 +83,22 @@ public class MainWindowController extends Observable implements Initializable, i
 			@Override
 			public void handle(KeyEvent event) {
 				String command=null;
-				if(event.getCode()==myKey.getUp())
+				if(event.getCode()==myKey.getUp()){
 					command="move up";
-				else if(event.getCode()==myKey.getDown())
+					SokobanDisplayer.setPlayerFileName("./resources/images/player4.jpg");
+				}
+				else if(event.getCode()==myKey.getDown()){
 					command="move down";
-				else if(event.getCode()==myKey.getLeft())
+					SokobanDisplayer.setPlayerFileName("./resources/images/player1.jpg");
+				}
+				else if(event.getCode()==myKey.getLeft()){
 					command="move left";
-				else if(event.getCode()==myKey.getRight())
+					SokobanDisplayer.setPlayerFileName("./resources/images/player3.jpg");
+				}
+				else if(event.getCode()==myKey.getRight()){
 					command="move right";
+					SokobanDisplayer.setPlayerFileName("./resources/images/player2.jpg");
+				}
 				else
 				{
 					displayMassege("Invalid key");
