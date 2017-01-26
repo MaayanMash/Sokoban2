@@ -148,6 +148,7 @@ public class MainWindowController extends Observable implements Initializable, i
 						alert.setContentText("Time: "+minCount+":"+secCount+"\nSteps: "+ theLevel.getCountSteps());
 					alert.show();
 					stopTimer();
+					time=false;
 				}
 			});
 	}
@@ -235,6 +236,7 @@ public class MainWindowController extends Observable implements Initializable, i
 			SokobanDisplayer.setPlayerFileName("./resources/images/player.jpg");
 			stopTimer();
 			startTimer();
+			this.time=true;
 			
 		}
 	}
