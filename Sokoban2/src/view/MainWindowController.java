@@ -155,6 +155,8 @@ public class MainWindowController extends Observable implements Initializable, i
 	public void startTimer() {
 		this.time=true;
 		this.countTime=0;
+		this.minCount=0;
+		this.secCount=0;
 		this.timer=new Timer();
 		SokobanTimer.textProperty().bind(this.CounterTime);
 		this.timer.scheduleAtFixedRate(new TimerTask() {
@@ -166,7 +168,7 @@ public class MainWindowController extends Observable implements Initializable, i
 					minCount++;
 					secCount=0;
 				}
-				if (minCount<10)
+				else if (minCount<10)
 					if(secCount<10)
 						CounterTime.set("0"+(minCount)+":0"+(secCount));
 					else
@@ -230,6 +232,7 @@ public class MainWindowController extends Observable implements Initializable, i
 		if(chosen != null){
 			setChanged();
 			notifyObservers("load "+ chosen.getPath());
+			SokobanDisplayer.setPlayerFileName("./resources/images/player.jpg");
 			stopTimer();
 			startTimer();
 			

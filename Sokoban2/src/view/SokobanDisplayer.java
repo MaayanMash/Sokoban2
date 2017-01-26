@@ -171,6 +171,7 @@ public class SokobanDisplayer extends Canvas{
 	public void setSokobanCol(int sokobanCol) {
 		this.sokobanCol = sokobanCol;
 	}
+
 	
 	
 }

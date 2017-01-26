@@ -12,7 +12,8 @@ public class CommandMassegeCli extends CommandA {
 	
 	@Override
 	public void execute() {
-		this.theClientHandler.insertToQueue(params);
+		if (theClientHandler!=null)
+			this.theClientHandler.insertToQueue(params);
 	}
 
 }

@@ -51,7 +51,7 @@ public class SokobanModel extends Observable implements iModel{
 		if(this.TheLevel==null)
 		{
 			this.setChanged();
-			this.notifyObservers("DisplayMassege the Levle is empty please load first");
+			this.notifyObservers("DisplayMassegeCli the Levle is empty please load first");
 			return;
 		}
 		
@@ -66,7 +66,7 @@ public class SokobanModel extends Observable implements iModel{
 		if(this.TheLevel==null)
 		{
 			this.setChanged();
-			this.notifyObservers("DisplayMassege the Levle is empty please load first");
+			this.notifyObservers("DisplayMassegeCli the Levle is empty please load first");
 			return;
 		}
 		
@@ -83,7 +83,7 @@ public class SokobanModel extends Observable implements iModel{
 		if(this.TheLevel==null)
 		{
 			this.setChanged();
-			this.notifyObservers("DisplayMassege the Levle is empty please load first");
+			this.notifyObservers("DisplayMassegeCli the Levle is empty please load first");
 			return;
 		}
 		
@@ -99,7 +99,7 @@ public class SokobanModel extends Observable implements iModel{
 		if(this.TheLevel==null)
 		{
 			this.setChanged();
-			this.notifyObservers("DisplayMassege the Levle is empty please load first");
+			this.notifyObservers("DisplayMassegeCli the Levle is empty please load first");
 			return;
 		}
 		

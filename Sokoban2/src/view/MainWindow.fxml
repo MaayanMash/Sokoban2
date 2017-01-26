@@ -30,7 +30,7 @@
    <left>
       <VBox prefHeight="355.0" prefWidth="113.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="ON/OFF Music" onAction="#startStopMusic">
+            <Button mnemonicParsing="false" text="Music ON/OFF" onAction="#startStopMusic">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
