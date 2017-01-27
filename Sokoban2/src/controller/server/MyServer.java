@@ -21,8 +21,9 @@ public class MyServer {
 	
 	public void runServer() throws Exception{
 		
-		ServerSocket server = new ServerSocket(this.port);
-		server.setSoTimeout(1000);
+		try{
+			ServerSocket server = new ServerSocket(this.port);
+			server.setSoTimeout(1000);
 		
 		//Waiting to the next client
 		while(!stop)
@@ -47,6 +48,10 @@ public class MyServer {
 			}
 		}
 		server.close();
+		
+		}catch (Exception e) {
+			throw new Exception();
+		}
 	}
 
 	public void start()

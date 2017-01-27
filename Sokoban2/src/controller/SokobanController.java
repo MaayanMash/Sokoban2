@@ -33,6 +33,8 @@ public class SokobanController implements Observer {
 		initHashMap();
 		this.gc.start();
 		this.theView.createBindSteps(this.countSteps);
+		this.theServer=null;
+		this.gc=null;
 	}
 	public SokobanController(iModel model,iView view, SokobanClientHandler ClientHendler, int port) {
 		this.gc=new GenericController();

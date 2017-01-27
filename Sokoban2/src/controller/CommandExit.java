@@ -11,6 +11,7 @@ public class CommandExit extends CommandA{
 	
 	public CommandExit(GenericController gc,MyServer server) {
 		this.gc=gc;
+		this.theServer=server;
 	}
 	
 	@Override
