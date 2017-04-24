@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Observable;
 
 import commons.Level2D;
@@ -17,6 +18,7 @@ import model.data.MyTextLevelLoader;
 import model.data.MyTextLevelSaver;
 import model.data.MyXmlLevelLoader;
 import model.data.MyXmlLevelSaver;
+import model.db.iDBManager;
 import model.policy.MySokobanPolicy;
 import model.policy.policy;
 import model.policy.move.MoveDown;
@@ -28,12 +30,14 @@ public class SokobanModel extends Observable implements iModel{
 	
 	private Level2D TheLevel;
 	private policy ThePolicy;
+	private iDBManager DBmanager;
 	
 
 	//Def' cot'
-	public SokobanModel() {
+	public SokobanModel(iDBManager dbManager) {
 		TheLevel=null;
 		ThePolicy=new MySokobanPolicy();
+		DBmanager=dbManager;
 	}
 	//cot'
 	public SokobanModel(policy pol) {
@@ -281,6 +285,32 @@ public class SokobanModel extends Observable implements iModel{
 	public void error() {
 		setChanged();
 		notifyObservers("displayMassegeCli Wrong Input");
+	}
+	@Override
+	public void addToDB(Object o) {
+		try {
+			DBmanager.add(o);
+		} catch (Exception e) {
+			this.setChanged();
+			notifyObservers("DisplayMassege The name already exists");
+		}
+		
+	}
+	@Override
+	public void updateDB(Object o) {
+		try {
+			DBmanager.update(o);
+
+		} catch (Exception e) {
+			this.setChanged();
+			notifyObservers("DisplayMassege Wrong Input");
+		}
+		
+	}
+	@Override
+	public List selectScore(String query) {
+		return DBmanager.selectScore(query);
+
 	}
 
 

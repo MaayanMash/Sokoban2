@@ -9,6 +9,7 @@ import commons.background;
 import commons.type;
 
 public class MySokobanPolicy implements policy {
+	
 
 	public boolean canMove(Level2D Thelevel, type t, TwoPoint points) {
 		if (t instanceof background || t==null)

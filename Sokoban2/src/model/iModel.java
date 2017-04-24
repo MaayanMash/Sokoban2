@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.List;
+
 import commons.Level2D;
 
 public interface iModel {
@@ -23,4 +25,8 @@ public interface iModel {
 	public void error();
 	
 	public int getSteps();
+	
+	public void addToDB(Object o) ;
+	public void updateDB(Object o);
+	public List selectScore(String query);
 }

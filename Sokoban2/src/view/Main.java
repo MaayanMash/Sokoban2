@@ -2,10 +2,11 @@ package view;
 	
 
 import java.util.List;
-
 import controller.SokobanController;
 import controller.generic.GenericController;
 import controller.server.SokobanClientHandler;
+import model.db.SokobanDBManager;
+import model.db.iDBManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.SokobanModel;
@@ -25,8 +26,11 @@ public class Main extends Application
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));				 
 			BorderPane root = (BorderPane) loader.load();
 			MainWindowController view = loader.getController();
+			ScoreController scoreTable=new ScoreController();
 			
-			SokobanModel model=new SokobanModel();
+			iDBManager DBManager = new SokobanDBManager();
+			
+			SokobanModel model=new SokobanModel(DBManager);
 			SokobanController sokobanController;
 			
 			//get args
@@ -35,17 +39,20 @@ public class Main extends Application
 			if (args.size()>0 && args.get(0).toLowerCase().equals("-server")){
 				int port=Integer.parseInt(args.get(1));
 				SokobanClientHandler clientHendler= new SokobanClientHandler();
-				sokobanController=new SokobanController(model, view, clientHendler, port);
+				sokobanController=new SokobanController(model, view,scoreTable, clientHendler, port);
 				clientHendler.addObserver(sokobanController);
 	
 			}
 			else {
-				sokobanController=new SokobanController(model, view);
+				sokobanController=new SokobanController(model, view,scoreTable);
 			}
 
 			model.addObserver(sokobanController);
 			view.addObserver(sokobanController);
 			view.setPrimaryStage(primaryStage);
+			//add new
+			scoreTable.addObserver(sokobanController);
+			
 			
 			Scene scene = new Scene(root,800,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

@@ -145,8 +145,12 @@ public class MainWindowController extends Observable implements Initializable, i
 				@Override
 				public void run() {
 					stopTimer();
-					Alert alert =new Alert(AlertType.INFORMATION);
-					alert.setHeaderText("The level solved!!");
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("solved!");
+					alert.setHeaderText("The level solved!!\n Are you want to save?");
+	
+					alert.getButtonTypes().setAll(ButtonType.YES,ButtonType.NO);
+					
 					if (minCount<10 && secCount<10)
 						alert.setContentText("Time: 0"+minCount+":0"+secCount+"\nSteps: "+ theLevel.getCountSteps());
 					else if (minCount<10 && secCount>10)
@@ -155,11 +159,24 @@ public class MainWindowController extends Observable implements Initializable, i
 						alert.setContentText("Time: "+minCount+":0"+secCount+"\nSteps: "+ theLevel.getCountSteps());
 					if (minCount>10 && secCount>10)
 						alert.setContentText("Time: "+minCount+":"+secCount+"\nSteps: "+ theLevel.getCountSteps());
-					alert.show();
-					stopTimer();
-					time=false;
+					Optional<ButtonType> result = alert.showAndWait();
+
+
+
+			//CHANGE
+					if (result.get() == ButtonType.YES){
+						
+					    setChanged();
+					    notifyObservers("exit");
+					    Platform.exit();
+					} else {
+						if (time)
+							continueTime();
+					    alert.close();
+				
 				}
-			});
+				}
+				});
 	}
 	
 	public void startTimer() {
